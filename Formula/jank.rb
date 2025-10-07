@@ -10,7 +10,9 @@ class Jank < Formula
   depends_on "openssl"
 
   def install
-    bin.install "jank"
+    (buildpath/"jank_0.1-1_aarch64/usr/local").cd do
+      cp_r Dir["*"], prefix
+    end
   end
 
   test do
