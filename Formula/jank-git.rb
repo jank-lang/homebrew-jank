@@ -14,6 +14,8 @@ class Jank < Formula
   depends_on "llvm@21"
   depends_on "openssl"
 
+  skip_clean "bin/jank"
+
   def install
     ENV.prepend_path "PATH", Formula["llvm@21"].opt_bin
 

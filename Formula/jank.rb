@@ -9,6 +9,8 @@ class Jank < Formula
   depends_on "libzip"
   depends_on "openssl"
 
+  skip_clean "bin/jank"
+
   def install
     (buildpath/"usr/local").cd do
       cp_r Dir["*"], prefix
