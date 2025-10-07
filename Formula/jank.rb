@@ -21,7 +21,7 @@ class Jank < Formula
     assert_predicate jank, :exist?, "jank must exist"
     assert_predicate jank, :executable?, "jank must be executable"
 
-    health_check = pipe_output("#{jank} --check-health")
+    health_check = pipe_output("#{jank} check-health")
     assert_match "jank can aot compile working binaries", health_check
   end
 end
