@@ -10,7 +10,7 @@
   <a href="https://github.com/jank-lang/homebrew-jank/actions" target="_blank"><img src="https://img.shields.io/github/actions/workflow/status/jank-lang/homebrew-jank/test.yml?branch=master&style=flat&logo=github&logoColor=fd893f&colorA=363636&colorB=363636" alt="CI" /></a>
 </div>
 
-# Installation
+# Installing a pre-built binary
 > [!NOTE]
 > Depending on what packages you have installed already, you're likely to get warnings about `brew link` not completing.
 >
@@ -21,14 +21,6 @@
 Currently, jank doesn't have a stable versioning scheme so the only
 version will be 0.1. As such, if you want a new version you'll have to
 reinstall the package.
-
-If you get an error about `git-lfs` missing, you may have to run the
-below:
-
-```bash
-git lfs install
-sudo ln -s "$(which git-lfs)" "$(git --exec-path)/git-lfs"
-```
 
 You can either:
 
@@ -53,6 +45,22 @@ Or, in a [`brew bundle`](https://github.com/Homebrew/homebrew-bundle) `Brewfile`
 ```ruby
 tap "jank-lang/jank"
 brew "jank"
+```
+
+# Installing a source-built binary
+The options are the same as above, but the formula is called `jank-git` instead
+of `jank`.
+
+```bash
+brew install jank-lang/jank/jank-git
+```
+
+If you get an error about `git-lfs` missing, you may have to run the
+below:
+
+```bash
+git lfs install
+sudo ln -s "$(which git-lfs)" "$(git --exec-path)/git-lfs"
 ```
 
 # Documentation
