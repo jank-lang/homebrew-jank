@@ -1,5 +1,5 @@
 class Jank < Formula
-  desc "Native Clojure dialect hosted on LLVM"
+  desc "The native Clojure dialect hosted on LLVM with seamless C++ interop."
   homepage "https://jank-lang.org"
   url "https://github.com/jank-lang/jank.git", branch: "main"
   version "0.1"
@@ -9,7 +9,6 @@ class Jank < Formula
   depends_on "git-lfs" => :build
   depends_on "ninja" => :build
 
-  depends_on "bdw-gc"
   depends_on "boost"
   depends_on "libzip"
   depends_on "llvm@21"
@@ -22,11 +21,6 @@ class Jank < Formula
 
     ENV.append "CPPFLAGS", "-L#{Formula["llvm@21"].opt_include}"
     ENV.append "CPPFLAGS", "-fno-sized-deallocation"
-
-    jank_install_dir = OS.linux? ? libexec : bin
-    inreplace "compiler+runtime/cmake/install.cmake",
-              '\\$ORIGIN',
-              jank_install_dir
 
     if OS.mac?
       ENV["SDKROOT"] = MacOS.sdk_path
@@ -48,13 +42,10 @@ class Jank < Formula
   test do
     jank = bin/"jank"
 
-    (testpath/"test.jank").write <<~JANK
-      ((fn [] (+ 5 7)))
-    JANK
-
-    assert_equal "12", shell_output("#{jank} run test.jank").strip.lines.last
-
     assert_predicate jank, :exist?, "jank must exist"
     assert_predicate jank, :executable?, "jank must be executable"
+
+    health_check = pipe_output("#{jank} --check-health")
+    assert_match "jank can aot compile working binaries", health_check
   end
 end
