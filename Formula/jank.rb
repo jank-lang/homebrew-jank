@@ -1,4 +1,4 @@
-class Tether < Formula
+class Jank < Formula
   desc "The native Clojure dialect hosted on LLVM with seamless C++ interop."
   homepage "https://jank-lang.org"
   url "https://cache.jank-lang.org/jank_0.1-1_aarch64.tar.gz"
