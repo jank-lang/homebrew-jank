@@ -9,7 +9,6 @@ class Jank < Formula
   depends_on "git-lfs" => :build
   depends_on "ninja" => :build
 
-  depends_on "bdw-gc"
   depends_on "boost"
   depends_on "libzip"
   depends_on "llvm@21"

@@ -5,7 +5,6 @@ class Jank < Formula
   version "0.1"
   license "MPL-2.0"
 
-  depends_on "bdw-gc"
   depends_on "boost"
   depends_on "libzip"
   depends_on "openssl"
