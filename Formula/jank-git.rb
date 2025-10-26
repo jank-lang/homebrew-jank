@@ -1,4 +1,4 @@
-class Jank < Formula
+class JankGit < Formula
   desc "The native Clojure dialect hosted on LLVM with seamless C++ interop."
   homepage "https://jank-lang.org"
   url "https://github.com/jank-lang/jank.git", branch: "main"
