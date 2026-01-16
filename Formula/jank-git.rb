@@ -13,6 +13,7 @@ class Jank < Formula
   depends_on "libzip"
   depends_on "llvm@21"
   depends_on "openssl"
+  depends_on "zlib"
 
   skip_clean "bin/jank"
 
