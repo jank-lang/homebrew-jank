@@ -8,6 +8,7 @@ class Jank < Formula
   depends_on "boost"
   depends_on "libzip"
   depends_on "openssl"
+  depends_on "zlib"
 
   skip_clean "bin/jank"
 
